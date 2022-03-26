@@ -1,7 +1,7 @@
-def toolbelt = tool 'toolbelt'
 pipeline {
     agent { label 'SlaveNode' }
       stages {
+          def toolbelt = tool 'toolbelt'
         stage('Hello') {
             steps {
                 echo 'Hello World'
