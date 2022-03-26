@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'AWSNODE' }
+    agent { label 'SlaveNode' }
       stages {
         stage('Hello') {
             steps {
