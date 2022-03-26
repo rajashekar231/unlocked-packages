@@ -16,7 +16,7 @@ pipeline {
             steps {
 //                withCredentials([usernamePassword(credentialsId: 'b3acfe60-dfa8-4a45-9685-921569451360', passwordVariable: 'sbpassword', usernameVariable: 'sbusername')]) {
                 // some block
-withCredentials([file(credentialsId: '34618e1e-5d36-4189-8e27-0e7273bd7919', variable: 'SERVER_KEY')]) {
+withCredentials([file(credentialsId: 'SERVER_KEY', variable: 'SERVER_KEY')]) {
                 sh '''
                 sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
                 '''
