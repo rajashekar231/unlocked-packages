@@ -1,3 +1,4 @@
+def toolbelt = tool 'toolbelt'
 pipeline {
     agent { label 'SlaveNode' }
       stages {
@@ -15,7 +16,7 @@ pipeline {
             steps{
                 withCredentials([file(credentialsId: 'SERVER_KEY', variable: 'SERVER_KEY')]) {
                     sh '''
-                    ${toolbelt} auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
+                    ${toolbelt}/sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
                     '''
                 }   
             }
