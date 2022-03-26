@@ -1,7 +1,9 @@
 pipeline {
     agent { label 'SlaveNode' }
+         environment {
+    toolbet = tool name: 'toolbelt', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+}
       stages {
-          def toolbelt = tool 'toolbelt'
         stage('Hello') {
             steps {
                 echo 'Hello World'
