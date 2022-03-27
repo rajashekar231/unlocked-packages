@@ -21,8 +21,7 @@ pipeline {
                     echo $PATH
                     pwd
                     sfdx --version
-                    echo ${toolbelt}/sfdx
-                    ${toolbelt}/sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
+                    sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
                     '''
                 }   
             }
