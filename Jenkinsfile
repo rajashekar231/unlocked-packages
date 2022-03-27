@@ -24,5 +24,28 @@ pipeline {
             }
 
         }
+        stage('deltapkg') {    
+            steps{
+                sh '''
+                     sfdx sfpowerkit:project:diff --revisionfrom ${{manual_commit_id_from}} --revisionto ${{manual_commit_id_from}} --output OutputFolder
+                '''
+          
+            }
+        stage('package') {
+            steps {
+                sh '''
+                cd SalesforceCICD
+                echo 'checkonlydeployment'
+                    ls -ltra
+                    cd dkg
+                    ls -ltra
+                    cat diff.json
+                    ls -ltr
+                    tree force-app/main/default
+                sfdx force:source:deploy -c -p force-app -u devorg
+                '''   
+            }    
+
+        }  
     }     
 }  
