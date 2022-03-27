@@ -15,8 +15,8 @@ pipeline {
             steps{
                 withCredentials([file(credentialsId: 'SERVER_KEY', variable: 'SERVER_KEY')]) {
                     sh '''
-                    echo ${toolbelt}
-                    sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
+                    echo ${toolbelt}/sfdx
+                    ${toolbelt}/sfdx auth:jwt:grant --clientid ${SB_CLIENTID} --jwtkeyfile ${SERVER_KEY} --username ${SB_USERNAME} --instanceurl ${SB_URL} --setalias devorg
                     '''
                 }   
             }
